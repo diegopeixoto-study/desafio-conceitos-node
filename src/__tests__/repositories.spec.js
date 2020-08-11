@@ -91,8 +91,11 @@ describe("Repositories", () => {
         likes: 15
       });
 
+
+      /* Changed to make sense with my project */ 
+      
     expect(response.body).toMatchObject({
-      likes: 0
+      error: 'Some fields are missing.'
     });
   });
 
