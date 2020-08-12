@@ -55,24 +55,23 @@ app.post("/repositories/:id/like", (request, response) => {
 });
 
 app.put("/repositories/:id", (request, response) => {
-  const { title, url, techs, likes} = request.body
+  const { title, url, techs} = request.body
   const { id } = request.params
   
   const repositoryIndex = repositories.findIndex(repo => repo.id === id)
 
   if (repositoryIndex < 0) {
-    return response.status(400).json({ error: 'Repository not found.'})
-  }
+    return response.status(400).json({ error: 'Repository not found.'})  }
+  
 
-  if ( !title || !url || !techs ) {
-    return response.status(400).json({error: 'Some fields are missing.'})
-  }
+  let likes = repositories[repositoryIndex].likes 
 
   const repository = {
     id,
     title,
     url,
-    techs
+    techs,
+    likes   
   }
 
   repositories[repositoryIndex] = repository

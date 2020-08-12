@@ -91,13 +91,10 @@ describe("Repositories", () => {
         likes: 15
       });
 
-
-      /* Changed to make sense with my project */ 
-      
-    expect(response.body).toMatchObject({
-      error: 'Some fields are missing.'
+      expect(response.body).toMatchObject({
+        likes: 0
+      });
     });
-  });
 
   it("should be able to delete the repository", async () => {
     const response = await request(app)
